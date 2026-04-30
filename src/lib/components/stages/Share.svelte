@@ -83,8 +83,8 @@
 <style>
   .share-stage {
     min-height: 100vh;
-    background: #1a0000;
-    color: #fff5c8;
+    background: #3E5B79;
+    color: #F2F8F2;
     padding: 32px 16px;
     display: flex;
     flex-direction: column;
@@ -93,6 +93,7 @@
   }
   h2 {
     margin: 0;
+    color: #DAB96D;
     font-family: serif;
     letter-spacing: 8px;
   }
@@ -112,11 +113,11 @@
   }
   .hint {
     font-size: 13px;
-    opacity: 0.7;
+    opacity: 0.85;
     margin: 0;
   }
   .error {
-    color: #ff8a8a;
+    color: #EDCBA8;
   }
   .actions {
     display: flex;

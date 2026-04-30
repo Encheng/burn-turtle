@@ -29,13 +29,13 @@
     transform: translateX(-50%);
     display: flex;
     gap: 8px;
-    background: rgba(255, 245, 200, 0.85);
+    background: rgba(242, 248, 242, 0.9);
     padding: 6px;
     border-radius: 12px;
     backdrop-filter: blur(8px);
     z-index: 10;
   }
   .active {
-    text-shadow: 0 0 6px #ffba00;
+    text-shadow: 0 0 6px #DAB96D;
   }
 </style>

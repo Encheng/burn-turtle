@@ -29,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1a0000;
+    background: #2a3e54;
     padding: 16px;
   }
   .paper {

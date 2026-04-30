@@ -58,20 +58,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #2a1818;
+    background: #3E5B79;
     padding: 60px 16px 100px;
   }
   .back {
     position: absolute;
     top: 12px;
     left: 12px;
-    background: rgba(255, 245, 200, 0.85);
+    background: rgba(242, 248, 242, 0.9);
     border: none;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     font-size: 22px;
-    color: #9a1c1c;
+    color: #3E5B79;
     cursor: pointer;
     z-index: 20;
   }
@@ -94,7 +94,7 @@
   }
   .hint {
     font-size: 12px;
-    color: rgba(255, 245, 200, 0.7);
+    color: rgba(242, 248, 242, 0.7);
     margin: 0;
   }
 </style>

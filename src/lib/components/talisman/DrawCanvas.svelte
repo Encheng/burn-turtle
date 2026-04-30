@@ -9,7 +9,7 @@
 
   const W = 1080;
   const H = 1440;
-  const INK = '#9a1c1c';
+  const INK = '#3E5B79';
   const BRUSH = 6;
   const ERASER = 30;
 

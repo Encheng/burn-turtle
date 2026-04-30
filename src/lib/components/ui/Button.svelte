@@ -34,19 +34,19 @@
     cursor: not-allowed;
   }
   .btn-primary {
-    background: #9a1c1c;
-    color: #fff5c8;
+    background: #DAB96D;
+    color: #3E5B79;
     font-weight: bold;
     letter-spacing: 4px;
   }
   .btn-secondary {
     background: transparent;
-    color: #9a1c1c;
-    border: 1px solid #9a1c1c;
+    color: #DAB96D;
+    border: 1px solid #DAB96D;
   }
   .btn-icon {
-    background: rgba(255, 255, 255, 0.7);
-    color: #9a1c1c;
+    background: rgba(242, 248, 242, 0.9);
+    color: #3E5B79;
     width: 48px;
     height: 48px;
     padding: 0;

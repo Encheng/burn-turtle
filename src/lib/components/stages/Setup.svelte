@@ -96,7 +96,7 @@
   }
   h1 {
     text-align: center;
-    color: #9a1c1c;
+    color: #DAB96D;
     font-family: serif;
     font-size: 32px;
     letter-spacing: 8px;
@@ -104,7 +104,8 @@
   }
   .tagline {
     text-align: center;
-    opacity: 0.7;
+    color: #EDCBA8;
+    opacity: 0.85;
     margin: 0 0 16px;
   }
   label {
@@ -112,19 +113,21 @@
     flex-direction: column;
     gap: 4px;
     font-size: 14px;
+    color: #F2F8F2;
   }
   label > span {
     font-weight: 500;
-    color: #555;
+    opacity: 0.85;
   }
   input[type='date'],
   input[type='time'],
   input[type='text'] {
     padding: 10px 12px;
-    border: 1px solid #c0b890;
+    border: 1px solid #A69B8E;
     border-radius: 6px;
     font-size: 16px;
-    background: #fffce8;
+    background: #F2F8F2;
+    color: #3E5B79;
     font-family: inherit;
   }
   .mode {
@@ -138,7 +141,8 @@
   .mode legend {
     font-size: 14px;
     font-weight: 500;
-    color: #555;
+    color: #F2F8F2;
+    opacity: 0.85;
     margin-bottom: 4px;
   }
   .mode > label {
@@ -146,17 +150,18 @@
     align-items: center;
     gap: 8px;
     padding: 12px;
-    border: 1px solid #c0b890;
+    border: 1px solid #A69B8E;
     border-radius: 6px;
-    background: #fffce8;
+    background: #F2F8F2;
+    color: #3E5B79;
     cursor: pointer;
   }
   .mode > label.selected {
-    border-color: #9a1c1c;
-    background: #fff3d6;
+    border-color: #3E5B79;
+    background: #DAB96D;
   }
   .mode strong {
-    color: #9a1c1c;
+    color: #3E5B79;
   }
   .mode span {
     opacity: 0.7;

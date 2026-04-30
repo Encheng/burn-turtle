@@ -14,23 +14,27 @@
   let imageUrl: string | null = null;
   let imageBlob: Blob | null = null;
   let captureError = false;
+  let capturing = true;
 
   onMount(async () => {
     if ($ritual.mode === 'draw') {
       try {
         await loadStamps();
       } catch {
-        // stamp load failed — still attempt capture, missing stamps will just be absent
+        // ignored — render whatever we have
       }
     }
-    await new Promise((r) => requestAnimationFrame(r));
-    await new Promise((r) => requestAnimationFrame(r));
+    // Give browser a beat to lay out and paint the visible talisman
+    await new Promise((r) => setTimeout(r, 400));
     try {
       const blob = await captureShareImage(captureRoot);
       imageBlob = blob;
       imageUrl = URL.createObjectURL(blob);
-    } catch {
+    } catch (err) {
+      console.error('Share capture failed:', err);
       captureError = true;
+    } finally {
+      capturing = false;
     }
   });
 
@@ -50,8 +54,10 @@
 </script>
 
 <div class="share-stage">
-  <div class="capture-root" bind:this={captureRoot} aria-hidden="true">
-    <div class="capture-paper ash">
+  <h2>已祈晴</h2>
+
+  <div class="paper-wrap">
+    <div class="paper" bind:this={captureRoot}>
       <TalismanFrame />
       {#if $ritual.mode === 'draw'}
         <DrawCanvas tool="brush" />
@@ -59,17 +65,12 @@
         <AutoTurtles />
       {/if}
     </div>
+    {#if capturing}
+      <p class="hint">產生分享圖中...</p>
+    {:else if captureError}
+      <p class="hint error">分享圖製作失敗，仍可重試</p>
+    {/if}
   </div>
-
-  <h2>已祈晴</h2>
-
-  {#if imageUrl}
-    <img src={imageUrl} alt="燒過的符咒" class="result" />
-  {:else if captureError}
-    <p class="error">分享圖製作失敗，仍可繼續</p>
-  {:else}
-    <p class="loading">製作分享圖中...</p>
-  {/if}
 
   <div class="actions">
     <Button variant="primary" disabled={!imageBlob} onClick={onShare}>
@@ -95,10 +96,27 @@
     font-family: serif;
     letter-spacing: 8px;
   }
-  .result {
-    max-width: 480px;
+  .paper-wrap {
     width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .paper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+  .hint {
+    font-size: 13px;
+    opacity: 0.7;
+    margin: 0;
+  }
+  .error {
+    color: #ff8a8a;
   }
   .actions {
     display: flex;
@@ -106,28 +124,5 @@
     gap: 12px;
     width: 100%;
     max-width: 320px;
-  }
-  .loading,
-  .error {
-    opacity: 0.7;
-  }
-  .capture-root {
-    position: fixed;
-    top: -10000px;
-    left: -10000px;
-    width: 1080px;
-    height: 1440px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .capture-paper {
-    position: relative;
-    width: 1080px;
-    height: 1440px;
-  }
-  .capture-paper.ash {
-    filter: grayscale(0.6) brightness(0.7);
   }
 </style>

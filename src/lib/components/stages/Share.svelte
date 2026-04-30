@@ -8,6 +8,7 @@
   import Button from '$lib/components/ui/Button.svelte';
   import { captureShareImage, shareOrDownload } from '$lib/utils/share';
   import { formatShareDate } from '$lib/utils/lunar';
+  import { loadStamps } from '$lib/utils/stamps';
 
   let captureRoot: HTMLDivElement;
   let imageUrl: string | null = null;
@@ -15,7 +16,15 @@
   let captureError = false;
 
   onMount(async () => {
-    await new Promise((r) => setTimeout(r, 500));
+    if ($ritual.mode === 'draw') {
+      try {
+        await loadStamps();
+      } catch {
+        // stamp load failed — still attempt capture, missing stamps will just be absent
+      }
+    }
+    await new Promise((r) => requestAnimationFrame(r));
+    await new Promise((r) => requestAnimationFrame(r));
     try {
       const blob = await captureShareImage(captureRoot);
       imageBlob = blob;

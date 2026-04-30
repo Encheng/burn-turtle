@@ -1,38 +1,32 @@
 <script lang="ts">
-  import { onMount, tick } from 'svelte';
+  import { onMount } from 'svelte';
   import { ritual } from '$lib/stores/ritual';
   import type { Op, Point } from '$lib/utils/types';
   import { addOp, popOp } from '$lib/utils/canvas';
+  import { loadStamps } from '$lib/utils/stamps';
 
   export let tool: 'brush' | 'stamp' | 'erase' = 'brush';
 
-  const W = 1080;  // logical canvas resolution
+  const W = 1080;
   const H = 1440;
   const INK = '#9a1c1c';
-  const BRUSH = 6;       // px in canvas-resolution
+  const BRUSH = 6;
   const ERASER = 30;
-  const STAMPS = ['/stamps/turtle-1.svg', '/stamps/turtle-2.svg', '/stamps/turtle-3.svg'];
 
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D | null = null;
   let drawing = false;
   let currentStroke: Point[] = [];
-  const stampImages: HTMLImageElement[] = [];
+  let stampImages: HTMLImageElement[] = [];
 
-  onMount(() => {
+  onMount(async () => {
     ctx = canvas.getContext('2d');
     if (!ctx) return;
-
-    // Preload stamps
-    STAMPS.forEach((src, i) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        stampImages[i] = img;
-        redraw();
-      };
-    });
-
+    try {
+      stampImages = await loadStamps();
+    } catch {
+      stampImages = [];
+    }
     redraw();
   });
 
@@ -138,11 +132,6 @@
     }
   }
 
-  // re-render when operations externally changed (undo from parent, restore from localStorage)
-  $: if (ctx) {
-    $ritual.operations;
-    tick().then(() => redraw());
-  }
 </script>
 
 <canvas

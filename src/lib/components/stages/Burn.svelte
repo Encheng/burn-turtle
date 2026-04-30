@@ -9,15 +9,7 @@
   function onDone() {
     stage.set('share');
   }
-
-  function onBack() {
-    if (confirm('確定放棄祈晴嗎？')) {
-      stage.set('ritual');
-    }
-  }
 </script>
-
-<svelte:window on:popstate={onBack} />
 
 <div class="burn-stage">
   <div class="paper">

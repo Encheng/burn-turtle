@@ -22,6 +22,37 @@ npm run check     # svelte-check
 npm run build     # production build
 ```
 
+## Trip pages
+
+Per-trip static pages (itinerary + hourly weather chart) live outside the
+ritual flow. Nothing in the UI links to them; they are reached by URL only.
+
+| URL | Source file |
+| --- | --- |
+| `/trips/<YYYY-MM-DD>-<slug>/itinerary` | `static/trips/<YYYY-MM-DD>-<slug>/itinerary.html` |
+| `/trips/<YYYY-MM-DD>-<slug>/weather` | `static/trips/<YYYY-MM-DD>-<slug>/weather.html` |
+| `/trip-list` | built from every `static/trips/*/trip.json` |
+
+To add a trip, create `static/trips/<YYYY-MM-DD>-<slug>/` with the two HTML
+files, any images they reference (relative paths, e.g. `profile.png`), and a
+`trip.json`:
+
+```json
+{
+  "title": "大小霸 3 天 2 夜",
+  "subtitle": "九九山莊二泊 · 大鹿林道東線進出 · 4 座百岳",
+  "dates": { "start": "2026-11-20", "end": "2026-11-22" },
+  "pages": [
+    { "label": "行程", "file": "itinerary.html" },
+    { "label": "天氣", "file": "weather.html" }
+  ]
+}
+```
+
+Rules: every HTML file must contain `<meta name="robots" content="noindex">`;
+never link to `/trip-list` from the app; do not list these paths in
+`robots.txt`. Pages are prerendered at build time (`src/lib/trips/`).
+
 ## Manual test checklist
 
 Before tagging a release, run through these on real devices:

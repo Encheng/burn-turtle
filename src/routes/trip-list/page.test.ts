@@ -44,3 +44,12 @@ describe('/trip-list', () => {
     expect(getByText('還沒有行程')).toBeInTheDocument();
   });
 });
+
+describe('/trip-list styles', () => {
+  it('gives every CSS custom property read a fallback so the page renders without app.css tokens', async () => {
+    const { readFileSync } = await import('node:fs');
+    const src = readFileSync(`${process.cwd()}/src/routes/trip-list/+page.svelte`, 'utf8');
+    const reads = src.match(/var\(--[a-z0-9-]+\)/g) ?? [];
+    expect(reads).toEqual([]);
+  });
+});

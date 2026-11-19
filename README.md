@@ -51,7 +51,10 @@ files, any images they reference (relative paths, e.g. `profile.png`), and a
 
 Rules: every HTML file must contain `<meta name="robots" content="noindex">`;
 never link to `/trip-list` from the app; do not list these paths in
-`robots.txt`. Pages are prerendered at build time (`src/lib/trips/`).
+`robots.txt`. Pages are prerendered at build time (`src/lib/trips/`); the route
+must answer with `Content-Type: text/html` exactly (no charset), otherwise
+SvelteKit stops treating it as a page and Vercel serves it as a download.
+Adding a folder needs a rebuild/redeploy before its clean URLs exist.
 
 ## Manual test checklist
 

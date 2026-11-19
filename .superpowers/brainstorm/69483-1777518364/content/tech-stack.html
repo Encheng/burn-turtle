@@ -1,0 +1,51 @@
+<h2>技術選型</h2>
+<p class="subtitle">純前端、靜態部署、行動裝置優先，三個合理方向</p>
+
+<div class="options">
+
+  <div class="option" data-choice="svelte" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>SvelteKit + Vite（推薦）</h3>
+      <p style="margin-bottom: 8px;"><strong>Bundle 最小</strong>、reactive state 寫起來最直覺、適合畫布密集的小品。</p>
+      <ul style="margin: 0; padding-left: 18px; font-size: 13px; opacity: 0.8;">
+        <li>SvelteKit static adapter → 純靜態站</li>
+        <li>Canvas API（畫筆）+ SVG（背景符咒框架、太陽、印章）混合</li>
+        <li>html-to-image 做分享圖輸出</li>
+        <li>lunar-javascript 處理農曆換算</li>
+        <li>部署：Cloudflare Pages / Netlify / GitHub Pages</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="react" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>React + Vite</h3>
+      <p style="margin-bottom: 8px;">最主流、最多資源、之後找協作者最容易。Bundle 比 Svelte 大。</p>
+      <ul style="margin: 0; padding-left: 18px; font-size: 13px; opacity: 0.8;">
+        <li>Vite + React + TypeScript</li>
+        <li>同樣 Canvas + SVG 混合策略</li>
+        <li>部署同上</li>
+        <li>適合你之後想長期維護或加功能</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="option" data-choice="vanilla" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Vanilla TS + Canvas</h3>
+      <p style="margin-bottom: 8px;">無框架、最輕、零依賴啟動。狀態管理要自己寫，對於這個 App 規模不算太麻煩。</p>
+      <ul style="margin: 0; padding-left: 18px; font-size: 13px; opacity: 0.8;">
+        <li>Vite + TypeScript + 純 DOM/Canvas</li>
+        <li>體積最小、啟動最快</li>
+        <li>沒有 reactive state，需要手動同步</li>
+        <li>適合你想「就這一個專案、不擴張」的情況</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top: 24px;">推薦 A —— 對小品最舒適，Bundle 對手機網路友善。但你如果之後想加功能、找協作者，B 更穩。</p>

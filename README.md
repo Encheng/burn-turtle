@@ -88,6 +88,15 @@ Before tagging a release, run through these on real devices:
 - [ ] Auto-advances to share stage when finished
 - [ ] Animation skips to end if tab is hidden mid-burn
 
+### Accessibility & input
+- [ ] Keyboard only: Tab reaches every control in visual order, focus ring is visible
+- [ ] Cmd/Ctrl+Z undoes the last stroke/stamp in draw mode
+- [ ] Toolbar announces the selected tool (aria-pressed) with VoiceOver/TalkBack
+- [ ] Empty date/location show inline errors after blur or submit
+- [ ] "Reduce motion" enabled: burn stage shows the ash state and advances in ~1s
+- [ ] iPhone with home indicator: 燒 button and toolbar clear the safe areas
+- [ ] Desktop / no Web Share: share button reads 下載圖片 and downloads the PNG
+
 ### Share stage
 - [ ] Ash image appears within ~2 seconds
 - [ ] iOS Safari: tapping share opens iOS share sheet with image

@@ -5,6 +5,9 @@ const STORAGE_KEY = 'burn-turtle:ritual';
 
 describe('ritual store', () => {
   beforeEach(() => {
+    // Fake timers so the store's 500 ms debounced write from a previous
+    // test can never fire mid-import and overwrite this test's fixture.
+    vi.useFakeTimers();
     localStorage.clear();
     vi.resetModules();
   });

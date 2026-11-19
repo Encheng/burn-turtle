@@ -15,8 +15,40 @@
   let imageBlob: Blob | null = null;
   let captureError = false;
   let capturing = true;
+  let sharing = false;
+  let canShareFiles = false;
+
+  function detectShareSupport(): boolean {
+    try {
+      if (typeof navigator === 'undefined') return false;
+      if (typeof navigator.share !== 'function' || typeof navigator.canShare !== 'function') {
+        return false;
+      }
+      const probe = new File([''], 'probe.png', { type: 'image/png' });
+      return navigator.canShare({ files: [probe] });
+    } catch {
+      return false;
+    }
+  }
+
+  async function capture() {
+    capturing = true;
+    captureError = false;
+    try {
+      const blob = await captureShareImage(captureRoot);
+      if (imageUrl) URL.revokeObjectURL(imageUrl);
+      imageBlob = blob;
+      imageUrl = URL.createObjectURL(blob);
+    } catch (err) {
+      console.error('Share capture failed:', err);
+      captureError = true;
+    } finally {
+      capturing = false;
+    }
+  }
 
   onMount(async () => {
+    canShareFiles = detectShareSupport();
     if ($ritual.mode === 'draw') {
       try {
         await loadStamps();
@@ -26,24 +58,20 @@
     }
     // Give browser a beat to lay out and paint the visible talisman
     await new Promise((r) => setTimeout(r, 400));
-    try {
-      const blob = await captureShareImage(captureRoot);
-      imageBlob = blob;
-      imageUrl = URL.createObjectURL(blob);
-    } catch (err) {
-      console.error('Share capture failed:', err);
-      captureError = true;
-    } finally {
-      capturing = false;
-    }
+    await capture();
   });
 
   async function onShare() {
-    if (!imageBlob) return;
-    await shareOrDownload(imageBlob, {
-      title: '已祈晴',
-      text: `${formatShareDate($ritual.date)} · ${$ritual.location} 祈求晴天 ☀️`
-    });
+    if (!imageBlob || sharing) return;
+    sharing = true;
+    try {
+      await shareOrDownload(imageBlob, {
+        title: '已祈晴',
+        text: `${formatShareDate($ritual.date)} · ${$ritual.location} 祈求晴天 ☀️`
+      });
+    } finally {
+      sharing = false;
+    }
   }
 
   function startOver() {
@@ -54,10 +82,14 @@
 </script>
 
 <div class="share-stage">
-  <h2>已祈晴</h2>
+  <header class="head">
+    <p class="step">步驟 3 / 3 · 完成</p>
+    <h1>已祈晴</h1>
+    <p class="sub">{formatShareDate($ritual.date)} · {$ritual.location}</p>
+  </header>
 
   <div class="paper-wrap">
-    <div class="paper" bind:this={captureRoot}>
+    <div class="paper" bind:this={captureRoot} aria-busy={capturing || undefined}>
       <TalismanFrame />
       {#if $ritual.mode === 'draw'}
         <DrawCanvas tool="brush" />
@@ -65,17 +97,34 @@
         <AutoTurtles />
       {/if}
     </div>
-    {#if capturing}
-      <p class="hint">產生分享圖中...</p>
-    {:else if captureError}
-      <p class="hint error">分享圖製作失敗，仍可重試</p>
-    {/if}
+    <p class="hint" role="status" aria-live="polite">
+      {#if capturing}
+        產生分享圖中…
+      {:else if captureError}
+        <span role="alert">分享圖製作失敗</span>
+      {:else}
+        分享圖已準備好
+      {/if}
+    </p>
   </div>
 
   <div class="actions">
-    <Button variant="primary" disabled={!imageBlob} onClick={onShare}>
-      分享到 LINE / IG
-    </Button>
+    {#if captureError}
+      <Button variant="primary" onClick={capture}>重新產生分享圖</Button>
+    {:else}
+      <Button
+        variant="primary"
+        disabled={!imageBlob}
+        loading={capturing || sharing}
+        onClick={onShare}
+      >
+        {#if canShareFiles}
+          分享到 LINE / IG
+        {:else}
+          下載圖片
+        {/if}
+      </Button>
+    {/if}
     <Button variant="secondary" onClick={startOver}>再做一張</Button>
   </div>
 </div>
@@ -83,19 +132,40 @@
 <style>
   .share-stage {
     min-height: 100vh;
-    background: #3E5B79;
-    color: #F2F8F2;
-    padding: 32px 16px;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--text);
+    padding: calc(var(--space-8) + env(safe-area-inset-top, 0px)) var(--space-4)
+      calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: var(--space-6);
   }
-  h2 {
+  .head {
+    text-align: center;
+  }
+  .step {
+    margin: 0 0 var(--space-2);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+  }
+  h1 {
     margin: 0;
-    color: #DAB96D;
-    font-family: serif;
-    letter-spacing: 8px;
+    color: var(--text-amber);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 10px;
+    text-indent: 10px;
+  }
+  .sub {
+    margin: var(--space-2) 0 0;
+    color: var(--peach);
+    font-size: 14px;
+    letter-spacing: 1px;
   }
   .paper-wrap {
     width: 100%;
@@ -103,7 +173,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2);
   }
   .paper {
     position: relative;
@@ -113,16 +183,17 @@
   }
   .hint {
     font-size: 13px;
-    opacity: 0.85;
+    color: var(--text-muted);
     margin: 0;
+    min-height: 1.5em;
   }
-  .error {
-    color: #EDCBA8;
+  .hint [role='alert'] {
+    color: var(--text-error);
   }
   .actions {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-3);
     width: 100%;
     max-width: 320px;
   }

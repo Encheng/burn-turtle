@@ -51,7 +51,12 @@ export async function captureShareImage(node: HTMLElement): Promise<Blob> {
     width: 1080,
     height: 1440,
     pixelRatio: 1,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    // Web fonts are loaded from Google Fonts (cross-origin). Embedding them
+    // would pull in 100+ CJK unicode-range slices and make capture take
+    // several seconds on mobile; the talisman text falls back to the system
+    // serif stack in the exported image instead.
+    skipFonts: true
   };
   try {
     const blob = await toBlob(node, opts);

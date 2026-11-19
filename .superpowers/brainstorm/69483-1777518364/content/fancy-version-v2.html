@@ -1,0 +1,455 @@
+<h2>「華麗版」風格（重畫版）</h2>
+<p class="subtitle">參考 Mofusand 圓胖萌系、道教符咒紙、台灣手繪範本</p>
+
+<style>
+  .fancy-card {
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border, #e0e0e0);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .fancy-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .fancy-preview {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fancy-info { padding: 16px; }
+  .fancy-info h3 { margin: 0 0 6px; font-size: 16px; }
+  .fancy-info p { margin: 0; font-size: 13px; opacity: 0.75; line-height: 1.5; }
+  .fancy-info .label { display: inline-block; background: rgba(0,0,0,0.06); padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-bottom: 8px; }
+</style>
+
+<div class="cards" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
+
+  <!-- =============================================== -->
+  <!-- Option 1: Mofusand-style chubby kawaii         -->
+  <!-- =============================================== -->
+  <div class="card fancy-card" data-choice="mofu" onclick="toggleSelect(this)">
+    <div class="fancy-preview" style="background: linear-gradient(180deg, #fff8e0 0%, #ffe5b4 65%, #ffd28a 100%);">
+      <svg viewBox="0 0 240 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="sun-mofu" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#fff5b8"/>
+            <stop offset="50%" stop-color="#ffd54a"/>
+            <stop offset="100%" stop-color="#f9a826"/>
+          </radialGradient>
+          <radialGradient id="shell-pink" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#ffd1dc"/>
+            <stop offset="100%" stop-color="#f48fb1"/>
+          </radialGradient>
+          <radialGradient id="shell-mint" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#c8e6c9"/>
+            <stop offset="100%" stop-color="#81c784"/>
+          </radialGradient>
+          <radialGradient id="shell-sky" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#bbdefb"/>
+            <stop offset="100%" stop-color="#64b5f6"/>
+          </radialGradient>
+          <radialGradient id="shell-peach" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#ffe0b2"/>
+            <stop offset="100%" stop-color="#ffb74d"/>
+          </radialGradient>
+          <radialGradient id="shell-lilac" cx="35%" cy="30%">
+            <stop offset="0%" stop-color="#e1bee7"/>
+            <stop offset="100%" stop-color="#ba68c8"/>
+          </radialGradient>
+          <filter id="soft-shadow">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/>
+            <feOffset dy="1.5"/>
+            <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Sparkles -->
+        <g fill="#fff" opacity="0.9">
+          <path d="M 35 50 l 1.5 4 l 4 1.5 l -4 1.5 l -1.5 4 l -1.5 -4 l -4 -1.5 l 4 -1.5 z"/>
+          <path d="M 205 60 l 1 3 l 3 1 l -3 1 l -1 3 l -1 -3 l -3 -1 l 3 -1 z"/>
+          <path d="M 200 200 l 1.2 3.5 l 3.5 1.2 l -3.5 1.2 l -1.2 3.5 l -1.2 -3.5 l -3.5 -1.2 l 3.5 -1.2 z"/>
+          <path d="M 30 180 l 1 3 l 3 1 l -3 1 l -1 3 l -1 -3 l -3 -1 l 3 -1 z"/>
+        </g>
+
+        <!-- Sun rays as chubby drops -->
+        <g fill="#ffb74d" opacity="0.85" filter="url(#soft-shadow)">
+          <ellipse cx="120" cy="32" rx="3" ry="8"/>
+          <ellipse cx="120" cy="124" rx="3" ry="8"/>
+          <ellipse cx="74" cy="78" rx="8" ry="3"/>
+          <ellipse cx="166" cy="78" rx="8" ry="3"/>
+          <ellipse cx="88" cy="46" rx="3.5" ry="7" transform="rotate(-45 88 46)"/>
+          <ellipse cx="152" cy="46" rx="3.5" ry="7" transform="rotate(45 152 46)"/>
+          <ellipse cx="88" cy="110" rx="3.5" ry="7" transform="rotate(45 88 110)"/>
+          <ellipse cx="152" cy="110" rx="3.5" ry="7" transform="rotate(-45 152 110)"/>
+        </g>
+
+        <!-- Big chubby sun -->
+        <circle cx="120" cy="78" r="36" fill="url(#sun-mofu)" filter="url(#soft-shadow)"/>
+        <!-- Sun face: closed eye smile -->
+        <path d="M 105 74 q 4 -5 8 0" stroke="#5a3a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 127 74 q 4 -5 8 0" stroke="#5a3a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 110 86 q 10 8 20 0" stroke="#5a3a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="103" cy="86" rx="5" ry="3" fill="#ffb6c1" opacity="0.7"/>
+        <ellipse cx="137" cy="86" rx="5" ry="3" fill="#ffb6c1" opacity="0.7"/>
+
+        <!-- Chubby Mofusand-style turtles, all facing sun (heads pointing up) -->
+        <!-- Each turtle: round shell + small head poking up + closed-eye smile -->
+        <g filter="url(#soft-shadow)">
+          <!-- Row 1 (closer to sun) -->
+          <g transform="translate(50 162)">
+            <ellipse cx="0" cy="2" rx="22" ry="16" fill="url(#shell-pink)"/>
+            <ellipse cx="0" cy="-1" rx="15" ry="11" fill="#ec407a" opacity="0.4"/>
+            <circle cx="0" cy="-14" r="9" fill="url(#shell-pink)"/>
+            <path d="M -3 -16 q 2 -2 4 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -1 -16 q 2 -2 4 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round" transform="translate(-2 0)"/>
+            <path d="M 1 -16 q 2 -2 4 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round" transform="translate(2 0)"/>
+            <path d="M -3 -10 q 3 2 6 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="-5" cy="-11" rx="2" ry="1.2" fill="#ff8aa3" opacity="0.7"/>
+            <ellipse cx="5" cy="-11" rx="2" ry="1.2" fill="#ff8aa3" opacity="0.7"/>
+          </g>
+          <g transform="translate(120 158)">
+            <ellipse cx="0" cy="2" rx="24" ry="17" fill="url(#shell-mint)"/>
+            <ellipse cx="0" cy="-1" rx="16" ry="12" fill="#43a047" opacity="0.4"/>
+            <circle cx="0" cy="-15" r="10" fill="url(#shell-mint)"/>
+            <path d="M -4 -17 q 2 -2 4 0" stroke="#1b3d1f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M 0 -17 q 2 -2 4 0" stroke="#1b3d1f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -3 -10 q 3 2 6 0" stroke="#1b3d1f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="-5" cy="-11" rx="2" ry="1.2" fill="#ff8aa3" opacity="0.6"/>
+            <ellipse cx="5" cy="-11" rx="2" ry="1.2" fill="#ff8aa3" opacity="0.6"/>
+          </g>
+          <g transform="translate(190 162)">
+            <ellipse cx="0" cy="2" rx="22" ry="16" fill="url(#shell-sky)"/>
+            <ellipse cx="0" cy="-1" rx="15" ry="11" fill="#1976d2" opacity="0.4"/>
+            <circle cx="0" cy="-14" r="9" fill="url(#shell-sky)"/>
+            <path d="M -3 -16 q 2 -2 4 0" stroke="#1a3a5a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -16 q 2 -2 4 0" stroke="#1a3a5a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -3 -10 q 3 2 6 0" stroke="#1a3a5a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="-5" cy="-11" rx="2" ry="1.2" fill="#ff8aa3" opacity="0.6"/>
+            <ellipse cx="5" cy="-11" rx="2" ry="1.2" fill="#ff8aa3" opacity="0.6"/>
+          </g>
+          <!-- Row 2 -->
+          <g transform="translate(40 222)">
+            <ellipse cx="0" cy="2" rx="20" ry="14" fill="url(#shell-peach)"/>
+            <circle cx="0" cy="-12" r="8" fill="url(#shell-peach)"/>
+            <path d="M -3 -14 q 2 -2 4 0" stroke="#5a3000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -14 q 2 -2 4 0" stroke="#5a3000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -2 -8 q 2 1 4 0" stroke="#5a3000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(85 232)">
+            <ellipse cx="0" cy="2" rx="20" ry="14" fill="url(#shell-lilac)"/>
+            <circle cx="0" cy="-12" r="8" fill="url(#shell-lilac)"/>
+            <path d="M -3 -14 q 2 -2 4 0" stroke="#3a1a4a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -14 q 2 -2 4 0" stroke="#3a1a4a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -2 -8 q 2 1 4 0" stroke="#3a1a4a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(155 232)">
+            <ellipse cx="0" cy="2" rx="20" ry="14" fill="url(#shell-mint)"/>
+            <circle cx="0" cy="-12" r="8" fill="url(#shell-mint)"/>
+            <path d="M -3 -14 q 2 -2 4 0" stroke="#1b3d1f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -14 q 2 -2 4 0" stroke="#1b3d1f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -2 -8 q 2 1 4 0" stroke="#1b3d1f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(200 222)">
+            <ellipse cx="0" cy="2" rx="20" ry="14" fill="url(#shell-pink)"/>
+            <circle cx="0" cy="-12" r="8" fill="url(#shell-pink)"/>
+            <path d="M -3 -14 q 2 -2 4 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -14 q 2 -2 4 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M -2 -8 q 2 1 4 0" stroke="#5a2a3a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- Row 3 (smaller) -->
+          <g transform="translate(60 273)">
+            <ellipse cx="0" cy="2" rx="16" ry="11" fill="url(#shell-sky)"/>
+            <circle cx="0" cy="-9" r="6" fill="url(#shell-sky)"/>
+            <path d="M -2 -10 q 1 -1 2 0" stroke="#1a3a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -10 q 1 -1 2 0" stroke="#1a3a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(120 278)">
+            <ellipse cx="0" cy="2" rx="16" ry="11" fill="url(#shell-peach)"/>
+            <circle cx="0" cy="-9" r="6" fill="url(#shell-peach)"/>
+            <path d="M -2 -10 q 1 -1 2 0" stroke="#5a3000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -10 q 1 -1 2 0" stroke="#5a3000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(180 273)">
+            <ellipse cx="0" cy="2" rx="16" ry="11" fill="url(#shell-lilac)"/>
+            <circle cx="0" cy="-9" r="6" fill="url(#shell-lilac)"/>
+            <path d="M -2 -10 q 1 -1 2 0" stroke="#3a1a4a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <path d="M 1 -10 q 1 -1 2 0" stroke="#3a1a4a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+
+        <text x="120" y="305" text-anchor="middle" font-size="10" fill="#7a4a10" font-family="serif" letter-spacing="1.5" font-weight="500">2026.05.15 ☼ 玉山主峰</text>
+      </svg>
+    </div>
+    <div class="fancy-info">
+      <span class="label">1 · Mofusand 萌系</span>
+      <h3>圓胖 mochi 萌龜</h3>
+      <p>參考 Mofusand 風格的圓胖比例、瞇瞇眼笑臉、粉嫩漸層、亮片點綴。最療癒、最現代、最容易讓人「啊我要存」。</p>
+    </div>
+  </div>
+
+  <!-- =============================================== -->
+  <!-- Option 2: Taoist Fu talisman (yellow + red ink) -->
+  <!-- =============================================== -->
+  <div class="card fancy-card" data-choice="fu" onclick="toggleSelect(this)">
+    <div class="fancy-preview" style="background: linear-gradient(180deg, #f4dc7a 0%, #e8c850 100%);">
+      <svg viewBox="0 0 240 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="paper-texture" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="4" fill="#e8c850" opacity="0"/>
+            <circle cx="1" cy="1" r="0.3" fill="#a08840" opacity="0.15"/>
+            <circle cx="3" cy="3" r="0.2" fill="#a08840" opacity="0.1"/>
+          </pattern>
+          <filter id="ink-bleed">
+            <feGaussianBlur stdDeviation="0.5"/>
+          </filter>
+        </defs>
+        <rect width="240" height="320" fill="url(#paper-texture)"/>
+
+        <!-- Decorative talisman frame -->
+        <g fill="none" stroke="#9a1c1c" stroke-width="1.5">
+          <rect x="14" y="14" width="212" height="292"/>
+        </g>
+        <g fill="none" stroke="#9a1c1c" stroke-width="0.6">
+          <rect x="20" y="20" width="200" height="280"/>
+        </g>
+
+        <!-- Top calligraphic header (敕令-like talisman opening) -->
+        <g fill="#9a1c1c" filter="url(#ink-bleed)">
+          <path d="M 100 32 q 5 -5 10 0 q 5 5 10 0 q 5 -5 10 0 l -2 4 q -5 5 -10 0 q -5 -5 -10 0 q -5 5 -10 0 z"/>
+          <text x="120" y="50" text-anchor="middle" font-size="14" font-family="serif" font-weight="bold" letter-spacing="6">勅 令</text>
+        </g>
+        <line x1="40" y1="62" x2="200" y2="62" stroke="#9a1c1c" stroke-width="1"/>
+
+        <!-- Sun: red ink circle with rays -->
+        <g filter="url(#ink-bleed)">
+          <g stroke="#9a1c1c" stroke-width="2.5" stroke-linecap="round" fill="none">
+            <line x1="120" y1="78" x2="120" y2="86"/>
+            <line x1="120" y1="130" x2="120" y2="138"/>
+            <line x1="74" y1="108" x2="82" y2="108"/>
+            <line x1="158" y1="108" x2="166" y2="108"/>
+            <line x1="86" y1="80" x2="92" y2="86"/>
+            <line x1="148" y1="86" x2="154" y2="80"/>
+            <line x1="86" y1="136" x2="92" y2="130"/>
+            <line x1="148" y1="130" x2="154" y2="136"/>
+          </g>
+          <circle cx="120" cy="108" r="22" fill="#c52828"/>
+          <!-- 日 character inside sun -->
+          <text x="120" y="115" text-anchor="middle" font-size="20" fill="#fff5c8" font-family="serif" font-weight="bold">日</text>
+        </g>
+
+        <!-- Turtles in red ink, all heads up toward sun -->
+        <g fill="#9a1c1c" filter="url(#ink-bleed)">
+          <g transform="translate(55 175)">
+            <ellipse cx="0" cy="2" rx="14" ry="10"/>
+            <circle cx="0" cy="-9" r="5"/>
+            <circle cx="-15" cy="3" r="2.5"/>
+            <circle cx="15" cy="3" r="2.5"/>
+            <circle cx="-12" cy="11" r="2"/>
+            <circle cx="12" cy="11" r="2"/>
+          </g>
+          <g transform="translate(120 178)">
+            <ellipse cx="0" cy="2" rx="15" ry="11"/>
+            <circle cx="0" cy="-10" r="5.5"/>
+            <circle cx="-16" cy="3" r="2.5"/>
+            <circle cx="16" cy="3" r="2.5"/>
+            <circle cx="-13" cy="12" r="2"/>
+            <circle cx="13" cy="12" r="2"/>
+          </g>
+          <g transform="translate(185 175)">
+            <ellipse cx="0" cy="2" rx="14" ry="10"/>
+            <circle cx="0" cy="-9" r="5"/>
+            <circle cx="-15" cy="3" r="2.5"/>
+            <circle cx="15" cy="3" r="2.5"/>
+            <circle cx="-12" cy="11" r="2"/>
+            <circle cx="12" cy="11" r="2"/>
+          </g>
+          <g transform="translate(45 218)">
+            <ellipse cx="0" cy="2" rx="13" ry="9"/>
+            <circle cx="0" cy="-8" r="4.5"/>
+          </g>
+          <g transform="translate(90 220)">
+            <ellipse cx="0" cy="2" rx="13" ry="9"/>
+            <circle cx="0" cy="-8" r="4.5"/>
+          </g>
+          <g transform="translate(150 220)">
+            <ellipse cx="0" cy="2" rx="13" ry="9"/>
+            <circle cx="0" cy="-8" r="4.5"/>
+          </g>
+          <g transform="translate(195 218)">
+            <ellipse cx="0" cy="2" rx="13" ry="9"/>
+            <circle cx="0" cy="-8" r="4.5"/>
+          </g>
+        </g>
+
+        <!-- Mystical strokes/seal on right -->
+        <g fill="none" stroke="#9a1c1c" stroke-width="1.2" stroke-linecap="round">
+          <path d="M 30 245 q 5 5 10 0 q 5 -5 10 0"/>
+          <path d="M 30 252 q 5 5 10 0 q 5 -5 10 0"/>
+        </g>
+        <!-- Red seal -->
+        <g transform="translate(195 250)">
+          <rect x="-12" y="-12" width="24" height="24" fill="#c52828" rx="2"/>
+          <text x="0" y="5" text-anchor="middle" font-size="14" fill="#fff5c8" font-family="serif" font-weight="bold">晴</text>
+        </g>
+
+        <!-- Calligraphic date -->
+        <g>
+          <text x="120" y="285" text-anchor="middle" font-size="11" fill="#3a1818" font-family="serif" letter-spacing="3">丙午年五月十五</text>
+          <text x="120" y="300" text-anchor="middle" font-size="9" fill="#3a1818" font-family="serif" letter-spacing="2">玉山主峰</text>
+        </g>
+      </svg>
+    </div>
+    <div class="fancy-info">
+      <span class="label">2 · 道教符咒</span>
+      <h3>祈晴黃符</h3>
+      <p>黃紙紅墨、勅令篆字、紅印「晴」字、農曆日期、符咒邊框。看起來像真的廟裡求來的，分享起來最有「儀式感」。</p>
+    </div>
+  </div>
+
+  <!-- =============================================== -->
+  <!-- Option 3: Taiwanese hand-drawn standard         -->
+  <!-- =============================================== -->
+  <div class="card fancy-card" data-choice="standard" onclick="toggleSelect(this)">
+    <div class="fancy-preview" style="background: #fefcf5;">
+      <svg viewBox="0 0 240 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="hand-roughen">
+            <feTurbulence baseFrequency="0.02" numOctaves="2"/>
+            <feDisplacementMap in="SourceGraphic" scale="1.5"/>
+          </filter>
+        </defs>
+        <!-- Paper edge shadow -->
+        <rect x="8" y="8" width="224" height="304" fill="none" stroke="#d8d4c0" stroke-width="0.5"/>
+
+        <!-- Big hand-drawn smiley sun -->
+        <g stroke="#1f1f1f" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sun body -->
+          <circle cx="120" cy="90" r="30"/>
+          <!-- Sun rays - hand drawn variable -->
+          <line x1="120" y1="46" x2="120" y2="56"/>
+          <line x1="120" y1="124" x2="120" y2="134"/>
+          <line x1="76" y1="90" x2="86" y2="90"/>
+          <line x1="154" y1="90" x2="164" y2="90"/>
+          <line x1="88" y1="58" x2="95" y2="65"/>
+          <line x1="145" y1="65" x2="152" y2="58"/>
+          <line x1="88" y1="122" x2="95" y2="115"/>
+          <line x1="145" y1="115" x2="152" y2="122"/>
+          <!-- Sun face - hand drawn smile -->
+          <circle cx="110" cy="84" r="2.5" fill="#1f1f1f"/>
+          <circle cx="130" cy="84" r="2.5" fill="#1f1f1f"/>
+          <path d="M 105 96 q 15 12 30 0"/>
+        </g>
+        <!-- Pink cheek blush -->
+        <ellipse cx="103" cy="98" rx="5" ry="3" fill="#ffb6c1" opacity="0.6"/>
+        <ellipse cx="137" cy="98" rx="5" ry="3" fill="#ffb6c1" opacity="0.6"/>
+
+        <!-- Hand-drawn smiley turtles all facing up to sun -->
+        <g stroke="#1f1f1f" stroke-width="1.8" fill="#fef9d6" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Row 1 -->
+          <g transform="translate(50 160)">
+            <ellipse cx="0" cy="0" rx="18" ry="13"/>
+            <!-- shell pattern -->
+            <path d="M -10 -2 q 5 -5 10 0 q 5 5 10 0" fill="none" stroke-width="1.2"/>
+            <!-- head pointing up -->
+            <ellipse cx="0" cy="-15" rx="8" ry="7" fill="#fef9d6"/>
+            <circle cx="-3" cy="-16" r="1.2" fill="#1f1f1f" stroke="none"/>
+            <circle cx="3" cy="-16" r="1.2" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -13 q 2 1.5 4 0" fill="none" stroke-width="1.2"/>
+            <!-- legs -->
+            <ellipse cx="-15" cy="6" rx="3.5" ry="2"/>
+            <ellipse cx="15" cy="6" rx="3.5" ry="2"/>
+          </g>
+          <g transform="translate(120 158)">
+            <ellipse cx="0" cy="0" rx="20" ry="14"/>
+            <path d="M -11 -2 q 5.5 -5 11 0 q 5.5 5 11 0" fill="none" stroke-width="1.2"/>
+            <ellipse cx="0" cy="-16" rx="9" ry="8" fill="#fef9d6"/>
+            <circle cx="-3" cy="-17" r="1.2" fill="#1f1f1f" stroke="none"/>
+            <circle cx="3" cy="-17" r="1.2" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -14 q 2 1.5 4 0" fill="none" stroke-width="1.2"/>
+            <ellipse cx="-16" cy="7" rx="3.5" ry="2"/>
+            <ellipse cx="16" cy="7" rx="3.5" ry="2"/>
+          </g>
+          <g transform="translate(190 160)">
+            <ellipse cx="0" cy="0" rx="18" ry="13"/>
+            <path d="M -10 -2 q 5 -5 10 0 q 5 5 10 0" fill="none" stroke-width="1.2"/>
+            <ellipse cx="0" cy="-15" rx="8" ry="7" fill="#fef9d6"/>
+            <circle cx="-3" cy="-16" r="1.2" fill="#1f1f1f" stroke="none"/>
+            <circle cx="3" cy="-16" r="1.2" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -13 q 2 1.5 4 0" fill="none" stroke-width="1.2"/>
+            <ellipse cx="-15" cy="6" rx="3.5" ry="2"/>
+            <ellipse cx="15" cy="6" rx="3.5" ry="2"/>
+          </g>
+
+          <!-- Row 2 -->
+          <g transform="translate(45 215)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <path d="M -9 -1.5 q 4.5 -4 9 0 q 4.5 4 9 0" fill="none" stroke-width="1.1"/>
+            <ellipse cx="0" cy="-13" rx="7" ry="6" fill="#fef9d6"/>
+            <circle cx="-2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -11 q 2 1 4 0" fill="none" stroke-width="1"/>
+          </g>
+          <g transform="translate(90 222)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <path d="M -9 -1.5 q 4.5 -4 9 0 q 4.5 4 9 0" fill="none" stroke-width="1.1"/>
+            <ellipse cx="0" cy="-13" rx="7" ry="6" fill="#fef9d6"/>
+            <circle cx="-2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -11 q 2 1 4 0" fill="none" stroke-width="1"/>
+          </g>
+          <g transform="translate(150 222)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <path d="M -9 -1.5 q 4.5 -4 9 0 q 4.5 4 9 0" fill="none" stroke-width="1.1"/>
+            <ellipse cx="0" cy="-13" rx="7" ry="6" fill="#fef9d6"/>
+            <circle cx="-2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -11 q 2 1 4 0" fill="none" stroke-width="1"/>
+          </g>
+          <g transform="translate(195 215)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <path d="M -9 -1.5 q 4.5 -4 9 0 q 4.5 4 9 0" fill="none" stroke-width="1.1"/>
+            <ellipse cx="0" cy="-13" rx="7" ry="6" fill="#fef9d6"/>
+            <circle cx="-2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2.5" cy="-14" r="1" fill="#1f1f1f" stroke="none"/>
+            <path d="M -2 -11 q 2 1 4 0" fill="none" stroke-width="1"/>
+          </g>
+
+          <!-- Row 3 -->
+          <g transform="translate(70 268)">
+            <ellipse cx="0" cy="0" rx="13" ry="9"/>
+            <ellipse cx="0" cy="-10" rx="5" ry="4.5" fill="#fef9d6"/>
+            <circle cx="-2" cy="-11" r="0.8" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2" cy="-11" r="0.8" fill="#1f1f1f" stroke="none"/>
+          </g>
+          <g transform="translate(120 270)">
+            <ellipse cx="0" cy="0" rx="14" ry="10"/>
+            <ellipse cx="0" cy="-11" rx="6" ry="5" fill="#fef9d6"/>
+            <circle cx="-2" cy="-12" r="0.8" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2" cy="-12" r="0.8" fill="#1f1f1f" stroke="none"/>
+          </g>
+          <g transform="translate(170 268)">
+            <ellipse cx="0" cy="0" rx="13" ry="9"/>
+            <ellipse cx="0" cy="-10" rx="5" ry="4.5" fill="#fef9d6"/>
+            <circle cx="-2" cy="-11" r="0.8" fill="#1f1f1f" stroke="none"/>
+            <circle cx="2" cy="-11" r="0.8" fill="#1f1f1f" stroke="none"/>
+          </g>
+        </g>
+
+        <!-- Hand-written date/location -->
+        <text x="120" y="298" text-anchor="middle" font-size="11" fill="#1f1f1f" font-family="serif" letter-spacing="2">2026.5.15 · 玉山</text>
+      </svg>
+    </div>
+    <div class="fancy-info">
+      <span class="label">3 · 台灣手繪範本</span>
+      <h3>原汁原味手繪</h3>
+      <p>白紙黑線、笑臉太陽、所有烏龜頭朝上。完全照壹週刊 2014 經典範本來，最「正統」最有梗。適合走文化梗路線。</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top: 24px; text-align: center;">這版有比較好嗎？選一個方向，或告訴我哪個方向再加強</p>

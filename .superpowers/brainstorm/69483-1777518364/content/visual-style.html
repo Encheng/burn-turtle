@@ -1,0 +1,204 @@
+<h2>視覺風格 / 繪製方式</h2>
+<p class="subtitle">選一個最對味的方向（這會決定整個 App 的調性）</p>
+
+<style>
+  .style-card {
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border, #e0e0e0);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .style-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .style-preview {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .style-info { padding: 16px; }
+  .style-info h3 { margin: 0 0 6px; font-size: 16px; }
+  .style-info p { margin: 0; font-size: 13px; opacity: 0.75; line-height: 1.5; }
+  .style-info .label { display: inline-block; background: rgba(0,0,0,0.06); padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-bottom: 8px; }
+
+  /* A: Hand-drawn watercolor */
+  .preview-a {
+    background:
+      radial-gradient(circle at 30% 30%, #fef9e7 0%, #fff8dc 60%, #faf3d0 100%);
+  }
+
+  /* B: Kawaii / cute */
+  .preview-b {
+    background: linear-gradient(180deg, #fff7d6 0%, #ffe9a3 100%);
+  }
+
+  /* C: Minimalist zen */
+  .preview-c {
+    background: #fafaf7;
+  }
+
+  /* D: Chinese ink wash */
+  .preview-d {
+    background:
+      radial-gradient(ellipse at center, #f5f1e8 0%, #e8dfc8 100%);
+    background-color: #f0e9d6;
+  }
+
+  .turtle { position: absolute; }
+</style>
+
+<div class="cards" style="grid-template-columns: repeat(2, 1fr); gap: 16px;">
+
+  <div class="card style-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="style-preview preview-a">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <!-- Sun -->
+        <circle cx="100" cy="80" r="22" fill="none" stroke="#e8a02d" stroke-width="2.5" stroke-dasharray="2 1"/>
+        <g stroke="#e8a02d" stroke-width="2" stroke-linecap="round">
+          <line x1="100" y1="40" x2="100" y2="48"/>
+          <line x1="100" y1="112" x2="100" y2="120"/>
+          <line x1="60" y1="80" x2="68" y2="80"/>
+          <line x1="132" y1="80" x2="140" y2="80"/>
+          <line x1="72" y1="52" x2="78" y2="58"/>
+          <line x1="122" y1="58" x2="128" y2="52"/>
+        </g>
+        <text x="100" y="86" text-anchor="middle" font-size="14" fill="#c98018">^_^</text>
+        <!-- Hand drawn turtles -->
+        <g fill="none" stroke="#5a4a30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="50" cy="140" rx="14" ry="10"/>
+          <circle cx="60" cy="135" r="5"/>
+          <path d="M 38 140 q-3 -2 -5 0 M 62 140 q3 -2 5 0 M 44 152 q-2 3 0 5 M 56 152 q2 3 0 5"/>
+          <ellipse cx="100" cy="155" rx="14" ry="10"/>
+          <circle cx="110" cy="150" r="5"/>
+          <path d="M 88 155 q-3 -2 -5 0 M 112 155 q3 -2 5 0 M 94 167 q-2 3 0 5 M 106 167 q2 3 0 5"/>
+          <ellipse cx="150" cy="140" rx="14" ry="10"/>
+          <circle cx="160" cy="135" r="5"/>
+          <path d="M 138 140 q-3 -2 -5 0 M 162 140 q3 -2 5 0 M 144 152 q-2 3 0 5 M 156 152 q2 3 0 5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="style-info">
+      <span class="label">A · 手繪水彩</span>
+      <h3>溫暖手繪風</h3>
+      <p>使用者用手指自由繪製。米白紙感、不規則線條，每張都獨一無二。最有「儀式感」但最慢。</p>
+    </div>
+  </div>
+
+  <div class="card style-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="style-preview preview-b">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <!-- Cute big sun -->
+        <g>
+          <circle cx="100" cy="75" r="28" fill="#ffd54a"/>
+          <g stroke="#ffb300" stroke-width="3" stroke-linecap="round">
+            <line x1="100" y1="32" x2="100" y2="42"/>
+            <line x1="100" y1="108" x2="100" y2="118"/>
+            <line x1="57" y1="75" x2="67" y2="75"/>
+            <line x1="133" y1="75" x2="143" y2="75"/>
+            <line x1="68" y1="44" x2="74" y2="50"/>
+            <line x1="126" y1="50" x2="132" y2="44"/>
+            <line x1="68" y1="106" x2="74" y2="100"/>
+            <line x1="126" y1="100" x2="132" y2="106"/>
+          </g>
+          <circle cx="92" cy="73" r="2.5" fill="#5a3a00"/>
+          <circle cx="108" cy="73" r="2.5" fill="#5a3a00"/>
+          <path d="M 92 82 q 8 6 16 0" stroke="#5a3a00" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="84" cy="82" r="3" fill="#ffb6c1" opacity="0.6"/>
+          <circle cx="116" cy="82" r="3" fill="#ffb6c1" opacity="0.6"/>
+        </g>
+        <!-- Cute turtles (cartoon) -->
+        <g>
+          <g transform="translate(40 145)">
+            <ellipse cx="0" cy="0" rx="18" ry="13" fill="#7ec77a"/>
+            <ellipse cx="0" cy="-2" rx="12" ry="8" fill="#5fa85b"/>
+            <circle cx="14" cy="-3" r="6" fill="#7ec77a"/>
+            <circle cx="16" cy="-4" r="1.2" fill="#000"/>
+            <path d="M 14 -1 q 3 1 4 -1" stroke="#000" stroke-width="0.8" fill="none"/>
+          </g>
+          <g transform="translate(100 162)">
+            <ellipse cx="0" cy="0" rx="18" ry="13" fill="#7ec77a"/>
+            <ellipse cx="0" cy="-2" rx="12" ry="8" fill="#5fa85b"/>
+            <circle cx="14" cy="-3" r="6" fill="#7ec77a"/>
+            <circle cx="16" cy="-4" r="1.2" fill="#000"/>
+            <path d="M 14 -1 q 3 1 4 -1" stroke="#000" stroke-width="0.8" fill="none"/>
+          </g>
+          <g transform="translate(160 145)">
+            <ellipse cx="0" cy="0" rx="18" ry="13" fill="#7ec77a"/>
+            <ellipse cx="0" cy="-2" rx="12" ry="8" fill="#5fa85b"/>
+            <circle cx="14" cy="-3" r="6" fill="#7ec77a"/>
+            <circle cx="16" cy="-4" r="1.2" fill="#000"/>
+            <path d="M 14 -1 q 3 1 4 -1" stroke="#000" stroke-width="0.8" fill="none"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="style-info">
+      <span class="label">B · 萌系卡通</span>
+      <h3>可愛貼圖風</h3>
+      <p>預設可愛烏龜插圖，使用者用「點一下」放置。快速、療癒、最容易被分享。像在玩貼紙簿。</p>
+    </div>
+  </div>
+
+  <div class="card style-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="style-preview preview-c">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <!-- Minimalist sun -->
+        <circle cx="100" cy="80" r="20" fill="none" stroke="#222" stroke-width="1.5"/>
+        <!-- Geometric turtles -->
+        <g fill="none" stroke="#222" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M 40 130 l 8 -10 l 16 0 l 8 10 l -8 10 l -16 0 z"/>
+          <path d="M 92 150 l 8 -10 l 16 0 l 8 10 l -8 10 l -16 0 z"/>
+          <path d="M 144 130 l 8 -10 l 16 0 l 8 10 l -8 10 l -16 0 z"/>
+        </g>
+        <text x="100" y="190" text-anchor="middle" font-size="9" fill="#888" letter-spacing="3">2026.05.15 · 玉山</text>
+      </svg>
+    </div>
+    <div class="style-info">
+      <span class="label">C · 極簡禪意</span>
+      <h3>極簡留白風</h3>
+      <p>幾何線條烏龜、大量留白。冷靜、有質感、高度 IG 化。畫面美但情緒比較淡。</p>
+    </div>
+  </div>
+
+  <div class="card style-card" data-choice="d" onclick="toggleSelect(this)">
+    <div class="style-preview preview-d">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <!-- Ink sun -->
+        <circle cx="100" cy="75" r="24" fill="#3a3a3a" opacity="0.85"/>
+        <circle cx="100" cy="75" r="24" fill="none" stroke="#000" stroke-width="0.8"/>
+        <!-- Ink turtles -->
+        <g fill="#2a2a2a">
+          <g transform="translate(45 145)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <ellipse cx="13" cy="-2" rx="5" ry="4"/>
+            <ellipse cx="-12" cy="6" rx="3" ry="2" opacity="0.7"/>
+            <ellipse cx="12" cy="6" rx="3" ry="2" opacity="0.7"/>
+          </g>
+          <g transform="translate(100 160)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <ellipse cx="13" cy="-2" rx="5" ry="4"/>
+            <ellipse cx="-12" cy="6" rx="3" ry="2" opacity="0.7"/>
+            <ellipse cx="12" cy="6" rx="3" ry="2" opacity="0.7"/>
+          </g>
+          <g transform="translate(155 145)">
+            <ellipse cx="0" cy="0" rx="16" ry="11"/>
+            <ellipse cx="13" cy="-2" rx="5" ry="4"/>
+            <ellipse cx="-12" cy="6" rx="3" ry="2" opacity="0.7"/>
+            <ellipse cx="12" cy="6" rx="3" ry="2" opacity="0.7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="style-info">
+      <span class="label">D · 水墨</span>
+      <h3>傳統水墨風</h3>
+      <p>毛筆筆觸、宣紙質感。最「正統」的儀式感，呼應華人傳說的根源。較莊重，可能跟登山的歡樂氣氛不太搭。</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top: 24px; text-align: center;">點選一個方向，或在 terminal 告訴我你的想法</p>

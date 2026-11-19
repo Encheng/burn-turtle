@@ -44,7 +44,7 @@
       y="50"
       text-anchor="middle"
       font-size="14"
-      font-family="serif"
+      font-family="'Noto Serif TC', 'Songti TC', 'PMingLiU', serif"
       font-weight="bold"
       fill="#3E5B79"
       letter-spacing="6"
@@ -97,8 +97,8 @@
       y="295"
       text-anchor="middle"
       font-size="11"
-      fill="#3E5B79"
-      font-family="serif"
+      fill="#24364B"
+      font-family="'Noto Serif TC', 'Songti TC', 'PMingLiU', serif"
       letter-spacing="2"
     >
       {footer}

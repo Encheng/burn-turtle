@@ -3,6 +3,9 @@ import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
+	// Vitest resolves Svelte to its server build unless the browser condition
+	// is set; without it onMount never runs inside component tests.
+	resolve: process.env.VITEST ? { conditions: ['browser'] } : undefined,
 	test: {
 		environment: 'jsdom',
 		setupFiles: ['./vitest-setup.ts'],

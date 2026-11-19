@@ -1,0 +1,184 @@
+<h2>「華麗版」要走哪種風格？</h2>
+<p class="subtitle">系統自動生成的版本，要讓人看到第一眼就「哇」</p>
+
+<style>
+  .fancy-card {
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border, #e0e0e0);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .fancy-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .fancy-preview {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fancy-info { padding: 16px; }
+  .fancy-info h3 { margin: 0 0 6px; font-size: 16px; }
+  .fancy-info p { margin: 0; font-size: 13px; opacity: 0.75; line-height: 1.5; }
+  .fancy-info .label { display: inline-block; background: rgba(0,0,0,0.06); padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-bottom: 8px; }
+  .meta { font-family: serif; font-size: 11px; opacity: 0.6; text-align: center; margin-top: 4px; }
+</style>
+
+<div class="cards" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
+
+  <!-- Option 1: Festive cute turtle parade -->
+  <div class="card fancy-card" data-choice="festive" onclick="toggleSelect(this)">
+    <div class="fancy-preview" style="background: linear-gradient(180deg, #fff5d4 0%, #ffd97a 100%);">
+      <svg viewBox="0 0 240 320" width="100%" height="100%">
+        <!-- Big cheerful sun -->
+        <g transform="translate(120 80)">
+          <g>
+            <line x1="0" y1="-55" x2="0" y2="-42" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="0" y1="42" x2="0" y2="55" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="-55" y1="0" x2="-42" y2="0" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="42" y1="0" x2="55" y2="0" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="-39" y1="-39" x2="-30" y2="-30" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="30" y1="-30" x2="39" y2="-39" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="-39" y1="39" x2="-30" y2="30" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+            <line x1="30" y1="30" x2="39" y2="39" stroke="#ff8a00" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <circle r="36" fill="#ffd54a"/>
+          <circle r="36" fill="none" stroke="#ff8a00" stroke-width="1.5"/>
+          <circle cx="-10" cy="-4" r="3" fill="#5a3a00"/>
+          <circle cx="10" cy="-4" r="3" fill="#5a3a00"/>
+          <path d="M -12 8 q 12 10 24 0" stroke="#5a3a00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="-18" cy="6" r="4" fill="#ffb6c1" opacity="0.7"/>
+          <circle cx="18" cy="6" r="4" fill="#ffb6c1" opacity="0.7"/>
+        </g>
+        <!-- Many colorful turtles in arc formation -->
+        <g>
+          <!-- Row 1 -->
+          <g transform="translate(40 175)"><ellipse cx="0" cy="0" rx="14" ry="10" fill="#ff7eb9"/><circle cx="11" cy="-2" r="5" fill="#ff7eb9"/><ellipse cx="0" cy="-1" rx="9" ry="6" fill="#e85a9d"/><circle cx="13" cy="-3" r="1" fill="#000"/></g>
+          <g transform="translate(80 165)"><ellipse cx="0" cy="0" rx="14" ry="10" fill="#7ec77a"/><circle cx="11" cy="-2" r="5" fill="#7ec77a"/><ellipse cx="0" cy="-1" rx="9" ry="6" fill="#5fa85b"/><circle cx="13" cy="-3" r="1" fill="#000"/></g>
+          <g transform="translate(120 162)"><ellipse cx="0" cy="0" rx="14" ry="10" fill="#7ac6e8"/><circle cx="11" cy="-2" r="5" fill="#7ac6e8"/><ellipse cx="0" cy="-1" rx="9" ry="6" fill="#4a9bc4"/><circle cx="13" cy="-3" r="1" fill="#000"/></g>
+          <g transform="translate(160 165)"><ellipse cx="0" cy="0" rx="14" ry="10" fill="#ffb84a"/><circle cx="11" cy="-2" r="5" fill="#ffb84a"/><ellipse cx="0" cy="-1" rx="9" ry="6" fill="#e89a26"/><circle cx="13" cy="-3" r="1" fill="#000"/></g>
+          <g transform="translate(200 175)"><ellipse cx="0" cy="0" rx="14" ry="10" fill="#c490e8"/><circle cx="11" cy="-2" r="5" fill="#c490e8"/><ellipse cx="0" cy="-1" rx="9" ry="6" fill="#9d6ec4"/><circle cx="13" cy="-3" r="1" fill="#000"/></g>
+          <!-- Row 2 -->
+          <g transform="translate(30 215)"><ellipse cx="0" cy="0" rx="13" ry="9" fill="#ff9db4"/><circle cx="10" cy="-2" r="4.5" fill="#ff9db4"/><ellipse cx="0" cy="-1" rx="8" ry="5" fill="#e87798"/></g>
+          <g transform="translate(70 220)"><ellipse cx="0" cy="0" rx="13" ry="9" fill="#a4d680"/><circle cx="10" cy="-2" r="4.5" fill="#a4d680"/><ellipse cx="0" cy="-1" rx="8" ry="5" fill="#7eb55a"/></g>
+          <g transform="translate(120 222)"><ellipse cx="0" cy="0" rx="13" ry="9" fill="#fdcb6e"/><circle cx="10" cy="-2" r="4.5" fill="#fdcb6e"/><ellipse cx="0" cy="-1" rx="8" ry="5" fill="#e0a93e"/></g>
+          <g transform="translate(170 220)"><ellipse cx="0" cy="0" rx="13" ry="9" fill="#74b9ff"/><circle cx="10" cy="-2" r="4.5" fill="#74b9ff"/><ellipse cx="0" cy="-1" rx="8" ry="5" fill="#4f8fd9"/></g>
+          <g transform="translate(210 215)"><ellipse cx="0" cy="0" rx="13" ry="9" fill="#dda0dd"/><circle cx="10" cy="-2" r="4.5" fill="#dda0dd"/><ellipse cx="0" cy="-1" rx="8" ry="5" fill="#b378b3"/></g>
+          <!-- Row 3 -->
+          <g transform="translate(60 260)"><ellipse cx="0" cy="0" rx="12" ry="8" fill="#ffb3c1"/><circle cx="9" cy="-2" r="4" fill="#ffb3c1"/></g>
+          <g transform="translate(100 265)"><ellipse cx="0" cy="0" rx="12" ry="8" fill="#b9eda3"/><circle cx="9" cy="-2" r="4" fill="#b9eda3"/></g>
+          <g transform="translate(140 265)"><ellipse cx="0" cy="0" rx="12" ry="8" fill="#ffd699"/><circle cx="9" cy="-2" r="4" fill="#ffd699"/></g>
+          <g transform="translate(180 260)"><ellipse cx="0" cy="0" rx="12" ry="8" fill="#a3d9ff"/><circle cx="9" cy="-2" r="4" fill="#a3d9ff"/></g>
+        </g>
+        <text x="120" y="300" text-anchor="middle" font-size="10" fill="#5a3a00" font-family="serif">2026.05.15 · 玉山主峰</text>
+      </svg>
+    </div>
+    <div class="fancy-info">
+      <span class="label">1 · 萌龜大遊行</span>
+      <h3>歡樂彩虹卡通版</h3>
+      <p>30+ 隻彩色萌龜列隊朝拜大太陽。最歡樂、最有「派對感」、最容易被笑著轉發。</p>
+    </div>
+  </div>
+
+  <!-- Option 2: Ink wash + gold scroll -->
+  <div class="card fancy-card" data-choice="ink-gold" onclick="toggleSelect(this)">
+    <div class="fancy-preview" style="background: linear-gradient(180deg, #f5e9c8 0%, #e8d49a 100%);">
+      <svg viewBox="0 0 240 320" width="100%" height="100%">
+        <!-- Decorative borders -->
+        <rect x="10" y="10" width="220" height="300" fill="none" stroke="#8b6f3a" stroke-width="1.5"/>
+        <rect x="14" y="14" width="212" height="292" fill="none" stroke="#c8a247" stroke-width="0.8"/>
+        <!-- Gold sun -->
+        <g transform="translate(120 90)">
+          <circle r="40" fill="#d4a017"/>
+          <circle r="40" fill="none" stroke="#8b6f3a" stroke-width="1.2"/>
+          <circle r="32" fill="none" stroke="#fff5d4" stroke-width="0.6" opacity="0.7"/>
+          <!-- Sun rays as ink strokes -->
+          <g stroke="#3a3020" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+            <line x1="0" y1="-50" x2="0" y2="-44"/>
+            <line x1="0" y1="44" x2="0" y2="50"/>
+            <line x1="-50" y1="0" x2="-44" y2="0"/>
+            <line x1="44" y1="0" x2="50" y2="0"/>
+          </g>
+        </g>
+        <!-- Ink turtles in formation -->
+        <g fill="#1a1a1a">
+          <g transform="translate(50 175)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(95 175)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(145 175)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(190 175)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(40 215)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(85 215)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(130 215)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(175 215)"><ellipse cx="0" cy="0" rx="14" ry="9"/><ellipse cx="11" cy="-2" rx="4" ry="3"/></g>
+          <g transform="translate(60 252)"><ellipse cx="0" cy="0" rx="13" ry="8"/><ellipse cx="10" cy="-2" rx="3.5" ry="2.5"/></g>
+          <g transform="translate(100 252)"><ellipse cx="0" cy="0" rx="13" ry="8"/><ellipse cx="10" cy="-2" rx="3.5" ry="2.5"/></g>
+          <g transform="translate(145 252)"><ellipse cx="0" cy="0" rx="13" ry="8"/><ellipse cx="10" cy="-2" rx="3.5" ry="2.5"/></g>
+          <g transform="translate(185 252)"><ellipse cx="0" cy="0" rx="13" ry="8"/><ellipse cx="10" cy="-2" rx="3.5" ry="2.5"/></g>
+        </g>
+        <!-- Calligraphic date -->
+        <text x="120" y="290" text-anchor="middle" font-size="13" fill="#3a3020" font-family="serif" letter-spacing="2">丙午年五月十五 · 玉山</text>
+      </svg>
+    </div>
+    <div class="fancy-info">
+      <span class="label">2 · 金箔水墨卷軸</span>
+      <h3>古意金箔水墨</h3>
+      <p>金箔太陽、水墨烏龜、書法日期（含農曆）。儀式感最強，分享起來最「有來頭」。</p>
+    </div>
+  </div>
+
+  <!-- Option 3: Floral mandala -->
+  <div class="card fancy-card" data-choice="mandala" onclick="toggleSelect(this)">
+    <div class="fancy-preview" style="background: radial-gradient(circle at center, #fef0f5 0%, #f8d7e0 100%);">
+      <svg viewBox="0 0 240 320" width="100%" height="100%">
+        <!-- Center sun -->
+        <g transform="translate(120 160)">
+          <!-- Outer ray pattern -->
+          <g stroke="#e8a4b8" stroke-width="0.8" fill="none">
+            <circle r="120" stroke-dasharray="2 4" opacity="0.4"/>
+            <circle r="95" stroke-dasharray="3 3" opacity="0.5"/>
+          </g>
+          <!-- Sun -->
+          <circle r="32" fill="#ffd54a"/>
+          <circle r="32" fill="none" stroke="#e89a26" stroke-width="1.5"/>
+          <circle r="24" fill="#fff3a8"/>
+          <!-- Mandala turtles -->
+          <g>
+            <!-- 8 turtles around inner ring -->
+            <g transform="rotate(0) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#a4d680"/><circle cx="0" cy="-7" r="4" fill="#7eb55a"/></g>
+            <g transform="rotate(45) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#74b9ff"/><circle cx="0" cy="-7" r="4" fill="#4f8fd9"/></g>
+            <g transform="rotate(90) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#ffb3c1"/><circle cx="0" cy="-7" r="4" fill="#e87798"/></g>
+            <g transform="rotate(135) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#fdcb6e"/><circle cx="0" cy="-7" r="4" fill="#e0a93e"/></g>
+            <g transform="rotate(180) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#dda0dd"/><circle cx="0" cy="-7" r="4" fill="#b378b3"/></g>
+            <g transform="rotate(225) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#a4d680"/><circle cx="0" cy="-7" r="4" fill="#7eb55a"/></g>
+            <g transform="rotate(270) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#74b9ff"/><circle cx="0" cy="-7" r="4" fill="#4f8fd9"/></g>
+            <g transform="rotate(315) translate(0 -65)"><ellipse cx="0" cy="0" rx="11" ry="8" fill="#ffb3c1"/><circle cx="0" cy="-7" r="4" fill="#e87798"/></g>
+            <!-- 12 turtles around outer ring -->
+            <g transform="rotate(15) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#fdcb6e"/><circle cx="0" cy="-5" r="3" fill="#e0a93e"/></g>
+            <g transform="rotate(45) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#dda0dd"/><circle cx="0" cy="-5" r="3" fill="#b378b3"/></g>
+            <g transform="rotate(75) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#a4d680"/><circle cx="0" cy="-5" r="3" fill="#7eb55a"/></g>
+            <g transform="rotate(105) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#74b9ff"/><circle cx="0" cy="-5" r="3" fill="#4f8fd9"/></g>
+            <g transform="rotate(135) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#ffb3c1"/><circle cx="0" cy="-5" r="3" fill="#e87798"/></g>
+            <g transform="rotate(165) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#fdcb6e"/><circle cx="0" cy="-5" r="3" fill="#e0a93e"/></g>
+            <g transform="rotate(195) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#dda0dd"/><circle cx="0" cy="-5" r="3" fill="#b378b3"/></g>
+            <g transform="rotate(225) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#a4d680"/><circle cx="0" cy="-5" r="3" fill="#7eb55a"/></g>
+            <g transform="rotate(255) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#74b9ff"/><circle cx="0" cy="-5" r="3" fill="#4f8fd9"/></g>
+            <g transform="rotate(285) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#ffb3c1"/><circle cx="0" cy="-5" r="3" fill="#e87798"/></g>
+            <g transform="rotate(315) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#fdcb6e"/><circle cx="0" cy="-5" r="3" fill="#e0a93e"/></g>
+            <g transform="rotate(345) translate(0 -100)"><ellipse cx="0" cy="0" rx="9" ry="6" fill="#dda0dd"/><circle cx="0" cy="-5" r="3" fill="#b378b3"/></g>
+          </g>
+        </g>
+        <text x="120" y="305" text-anchor="middle" font-size="10" fill="#a85575" font-family="serif" letter-spacing="2">2026.05.15 · 玉山</text>
+      </svg>
+    </div>
+    <div class="fancy-info">
+      <span class="label">3 · 烏龜曼陀羅</span>
+      <h3>對稱萬花筒</h3>
+      <p>20+ 烏龜以幾何放射狀環繞太陽，像曼陀羅。最有設計感、最 IG 美學、最像精品。</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top: 24px; text-align: center;">點選一個方向，或在 terminal 補充想法</p>

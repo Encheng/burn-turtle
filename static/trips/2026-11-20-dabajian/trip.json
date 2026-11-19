@@ -1,0 +1,9 @@
+{
+  "title": "大小霸 3 天 2 夜",
+  "subtitle": "九九山莊二泊 · 大鹿林道東線進出 · 4 座百岳",
+  "dates": { "start": "2026-11-20", "end": "2026-11-22" },
+  "pages": [
+    { "label": "行程", "file": "itinerary.html" },
+    { "label": "天氣", "file": "weather.html" }
+  ]
+}
